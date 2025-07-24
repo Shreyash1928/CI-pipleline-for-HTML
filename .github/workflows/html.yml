@@ -1,0 +1,25 @@
+name: 🔧 HTML CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - production
+
+jobs:
+  run-basic-ci:
+    name: Run Basic CI Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: 👋 Print Hello Message
+        run: echo "✅ Hello from GitHub Actions - HTML CI Pipeline!"
+
+      - name: 🕒 Print Current Date and Time
+        run: date
+
+      - name: 📄 List HTML Files
+        run: ls -al *.html || echo "No HTML files found"
