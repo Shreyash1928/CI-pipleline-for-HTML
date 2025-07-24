@@ -8,9 +8,9 @@ This project demonstrates a **basic Continuous Integration (CI) pipeline** for a
 html-ci-demo/
 ├── .github/
 │ └── workflows/
-│ └── hello-world.yml
+│ └── html.yml
+├── index.html
 └── README.md
-
 
 ---
 
@@ -29,15 +29,38 @@ on:
       - main
       - production
 
+---
 ## 🛠 Jobs and Steps
 
 jobs:
-  hello_word:
+  run-basic-ci:
+    name: Run Basic CI Check
     runs-on: ubuntu-latest
-    steps:
-      - name: Print hello world
-        run: echo "Hello world"
 
-      - name: Print current date
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: 👋 Print Hello Message
+        run: echo "✅ Hello from GitHub Actions - HTML CI Pipeline!"
+
+      - name: 🕒 Print Current Date and Time
         run: date
 
+      - name: 📄 List HTML Files
+        run: ls -al *.html || echo "No HTML files found"
+
+
+🎯 What I Learned
+
+✅ Setting up a basic CI pipeline using GitHub Actions
+✅ Understanding how workflows, jobs, and steps work
+✅ Defining triggers based on Git events (push to branches)
+
+
+🔮 Future Improvements
+
+🔍 Add HTML validation using htmlhint
+🚀 Deploy site to GitHub Pages or Netlify
+🐳 Convert project into a Docker container and add Docker CI
+🔔 Integrate Slack notifications for CI results
